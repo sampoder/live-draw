@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Console</title>
+	<style>
+		* {
+
+			box-sizing: border-box;
+		}
+
+		input:focus,
+		textarea:focus,
+		select:focus {
+			outline: none;
+		}
+
+		body {
+			font: 13px Helvetica, Arial;
+			color: #28FE14;
+			background: #030303;
+			padding: 10px
+		}
+
+		#messages {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			background: #030303;
+		}
+
+		#messages li {
+			padding: 5px 10px;
+			background: #030303;
+		}
+
+		form {
+			padding: 5px 10px;
+			background: #030303;
+		}
+
+		#messages li:nth-child(odd) {
+			background: #eee;
+			background: #030303;
+		}
+
+		input {
+			border: none;
+			color: #28FE14;
+			background-image: none;
+			background-color: transparent;
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+			box-shadow: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div style="position: fixed; right: 0; padding-right: 40px">
+		<div style="border: 1px solid green; width: 400px; padding: 20px; line-height: 1.8">
+			<h2><strong style="margin-bottom: 0px">Key commands:</strong> </h2>
+      <p>
+      <span style="background: #242323; padding: 4px; border-radius: 4px;">circle(x, y, d)</span> x represents the position on the x axis, y represents the position on the y axis, d represents the diameter of the circle.
+      </p>
+      <p>
+      <span style="background: #242323; padding: 4px; border-radius: 4px;">triangle(x1, y1, x2, y2, x3, y3)</span> each x parameter and each y parameter define their respective locations on the canvas.
+      </p>
+      <p>
+      <span style="background: #242323; padding: 4px; border-radius: 4px;">line(x1, y1, x2, y2)</span> each x parameter and each y parameter define their respective locations on the canvas.
+      </p>
+      <p>
+      <span style="background: #242323; padding: 4px; border-radius: 4px;">quad(x1, y1, x2, y2, x3, y3, x4, y4)</span> each x parameter and each y parameter define their respective locations on the canvas to make a quadrilateral.
+      </p>
+      <p>
+      <span style="background: #242323; padding: 4px; border-radius: 4px;">background('#XXXXXX');</span> change the colour of the background using a HEX code.
+      </p>
+      <p>
+      <span style="background: #242323; padding: 4px; border-radius: 4px;">stroke('#XXXXXX');</span> change the colour of the shapes that will be drawn in the future, using a HEX code.
+      </p>
+    </div></div>
+	<ul id="messages"></ul>
+	<form action="">
+		<strong id="name">sam ~</strong> <input autofocus="autofocus" onfocus="this.select()" onblur="this.focus()" id="m" autocomplete="off" />
+    </form>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+
+      function project(){
+        var first = ["burly","ambiguous","rumbling","fine","distinct","even","cloudy","lateral","bumpy","nonstop","deep","acoustic","tide","relic","flat","tinted","bright","flawless","painted","grave","caterwauling","aquamarine","wiggly","learned","past","outrageous","just","natural","furtive","coral","organized","inquisitive","organic","free","grandiose","scrawny","private","plump","momentous","wide","uttermost","fair","flint","chivalrous","dashing","veil","green","antique","juicy","infrequent","giant","atom","lyrical","rightful","enormous","bold","torpid","viridian","modern","destiny","solar","available","five","animated","cyclic","gigantic","spiny","discreet","cooked","gilded","bittersweet","toothsome","wirehaired","sun","internal","piquant","river","handsome","mini","held","cautious","rigorous","crystalline","pine","outgoing","maroon","tropical","bronzed","tar","curious","deserted","repeated","stellar","separated","hail","abaft","calm","tough","keen","muddy","maddening","vivacious","golden","ionized","resisted","fossil","fringe","almond","lumpy","ruddy","prairie","daffodil","teal","factual","pale","ring","scintillating","nice","vagabond","shadow","fanatical","discovered","sturdy","bristle","elite","wave","tan","panoramic","rough","glowing","chambray","polarized","bevel","famous","seen","equable","whimsical","spectrum","first","vintage","literate","cuboid","heartbreaking","maple","ripe","north","energetic","sandy","ivory","glib","spectacled","kiwi","vaulted","lowly","voracious","crimson","round","jagged","whip","believed","understood","clever","heavenly","humdrum","roomy","fluoridated","slime","ballistic","celestial","secret","equatorial","bony","peach","sequoia","foremost","marbled","zesty","oil","pickle","mica","spiral","different","second","jeweled","rural","woolen","beautiful","beaded","shore","boggy","wiry","narrow","playful","star","scratch","bead","functional","witty","broadleaf","verdant","illustrious","little","expensive","thinkable","skillful","citrine","achieved","soft","amusing","concise","bubbly","tortoiseshell","iced","rare","satisfying","shade","thunder","slow","sedate","dandy","positive","hungry","superficial","faceted","material","mellow","dirt","stormy","fascinated","polydactyl","garnet","grass","lean","odd","thread","catkin","fire","chestnut","frequent","adorable","veiled","tartan","berry","sunset","closed","ember","sleet","abrasive","pointy","wild","knowing","hammerhead","fan","season","furry","seemly","same","royal","excessive","flower","brawny","luxuriant","angry","pinnate","dramatic","nebulous","perpetual","vanilla","quick","gregarious","ionian","geode","ambitious","harmless","malleable","chipped","field","carnation","scandalous","lavish","incandescent","ebony","butter","quark","night","quirky","ringed","rift","opposite","righteous","fearless","spicy","cyan","scientific","rose","light","dented","dent","amenable","flaxen","safe","superb","confirmed","legend","young","time","rainy","subsequent","valuable","verbose","carpal","polar","malachite","therapeutic","unleashed","jewel","versed","future","alluring","bitter","mangrove","sincere","proud","shine","paper","full","wobbly","shimmering","dust","shining","gifted","victorious","aromatic","showy","honeysuckle","zany","dour","roasted","plume","sugared","dandelion","married","grizzled","water","thoracic","rhetorical","silent","successful","yummy","placid","wistful","shard","pastoral","handy","oval","bolder","abiding","foregoing","galvanized","delirious","octagonal","spice","amused","daily","titanium","helpful","delightful","root","yellow","thrilling","large","boulder","cherry","prism","ritzy","fern","fog","important","snow","sticky","potent","comet","rustic","marble","evening","enchanting","unique","ivy","holly","cooperative","protective","mirage","admitted","flashy","harmonious","massive","steadfast","pewter","somber","glistening","slash","exultant","giddy","sky","breezy","gleaming","adjoining","aged","flannel","climbing","puzzled","guttural","hill","hazel","quilt","moored","resolute","mighty","thorn","transparent","unruly","obtainable","mousy","efficacious","darkened","jelly","pollen","guiltless","futuristic","eastern","rust","slender","nine","battle","tasteful","foam","accidental","legendary","adaptable","few","experienced","invented","foggy","canary","desert","translucent","booming","plucky","accurate","glacier","jumbled","best","charming","iridescent","jolly","lopsided","emphasized","gaudy","cool","brass","raspy","shorthaired","polite","hickory","bloom","quintessential","responsible","efficient","platinum","sparkly","gelatinous","planet","elastic","brook","generated","caramel","dusty","fifth","quill","magnificent","fate","copper","branched","heathered","rainbow","spiky","deciduous","fierce","cute","diligent","boom","flying","lemon","substantial","petalite","blush","friendly","icy","hypnotic","seed","iron","buttoned","complex","tourmaline","gold","sour","beryl","wind","nasal","far","pie","road","tranquil","obvious","hexagonal","romantic","dolomite","crawling","verbena","alive","apple","flossy","jazzy","statuesque","decisive","longing","shrub","poised","orange","goldenrod","shiny","silky","tidal","smart","valiant","billowy","reminiscent","catnip","sophisticated","gem","artistic","splendid","various","perfect","sepia","silly","sand","shadowed","developing","curvy","recondite","wealthy","florentine","glory","noble","glorious","general","lacy","colossal","exclusive","metal","debonair","sponge","immediate","principled","wooden","tame","puzzle","hurricane","acute","great","luminous","wandering","clover","equinox","awesome","subdued","super","abrupt","chalk","aluminum","colorful","profuse","striped","northern","sapphire","serious","paint","curse","succulent","knotty","grey","salty","square","lumbar","omniscient","scented","confusion","sweet","fixed","buttercup","cubic","mammoth","sulfuric","winter","garrulous","rapid","scratched","invincible","lively","living","holy","respected","lavender","robust","periwinkle","prong","tasty","youthful","majestic","tall","sly","cactus","nickel","watery","meadow","rhinestone","dapper","lava","honored","checkered","truth","synonymous","maze","absorbing","vivid","cookie","fallacious","beneficial","swift","seasoned","intermediate","woozy","heather","smooth","quartz","sneaky","educated","auspicious","cut","cold","rune","blossom","buttery","fourth","well","near","picayune","thundering","spotted","immense","buttered","eggplant","kaput","lapis","shared","broken","pattern","rich","jasper","chiseled","scarlet","lucky","dune","locrian","brave","ossified","tabby","tender","invited","rattle","absorbed","uncovered","clumsy","crocus","curved","strengthened","good","insidious","unexpected","observant","imported","economic","shaded","chocolate","congruous","fast","forested","hot","cerulean","universal","mewing","judicious","messy","spotty","cheerful","tulip","ginger","brazen","resilient","arrow","brief","summer","plastic","uneven","laser","sulky","morning","mixolydian","smoggy","lizard","boatneck","boiled","traveling","ash","groovy","stump","foil","mint","exciting","psychedelic","western","bouncy","oceanic","festive","joyous","mesquite","numerous","picturesque","flicker","elated","plain","snowy","frost","oasis","mud","canyon","voltaic","harvest","peppermint","habitual","bow","nifty","three","aback","fantasy","jade","blushing","cord","ancient","cultured","speckle","quickest","necessary","broad","whispering","grove","basalt","confused","gabby","shell","kindhearted","noon","lovely","sore","shy","capable","ten","puzzling","earthy","mixed","polished","ahead","magical","maize","quiet","lackadaisical","chain","nimble","lake","shelled","tungsten","violet","pricey","stingy","regular","detailed","imaginary","glimmer","instinctive","historical","gravel","linen","supreme","indigo","assorted","glaze","succinct","fuzzy","amazing","pond","hissing","quiver","truthful","glen","holistic","noisy","cedar","tin","lush","tarry","erratic","boiling","awake","neat","excited","solstice","southern","tidy","wry","quilted","sharp","spiffy","shocking","pumped","marred","horse","daisy","gratis","enchanted","sordid","hallowed","spiritual","wise","spurious","ninth","sparkling","longhaired","meteor","trusting","automatic","cake","feline","cheddar","walnut","fluttering","clear","airy","bald","languid","cotton","agreeable","purring","open","eight","candy","chill","quasar","sprout","grizzly","heliotrope","precious","pointed","island","standing","plant","lydian","forest","silver","shrouded","marked","rambunctious","granite","branch","grateful","flax","charm","lying","vast","gainful","bronze","wonderful","patch","neighborly","marvelous","nebula","remarkable","familiar","enshrined","wheat"]
+        
+        var second = ["mandrill","wakeboard","diagram","lungfish","dracorex","cormorant","lingonberry","chord","mortarboard","shoe","coral","bismuth","spectroscope","lamp","archaeopteryx","brontomerus","salad","respect","yak","telescope","cerise","tile","tarsier","algebra","fender","maraca","salt","month","bee","sodalite","reading","song","play","archer","blackbird","frill","september","zone","quasar","helenium","macrame","barber","digestion","camp","drill","floor","hornet","shamrock","bear","tire","phalange","heat","honeysuckle","milkshake","egret","couch","margin","crest","thing","biology","cardamom","viscose","cirrus","dove","titanium","accelerator","aster","marscapone","yamamomo","mochi","waxflower","crepe","furniture","gargoyle","clownfish","guan","squirrel","toothbrush","router","pluto","relation","locket","specialist","steam","uranus","answer","nautilus","aquarius","ambert","parrot","spirit","fascinator","booklet","soybean","law","allosaurus","hosta","gigantspinosaurus","daisy","rover","alibi","cricket","gander","step","cart","ragdoll","gum","agenda","grandparent","success","drop","yumberry","diabloceratops","museum","postage","mastodon","baker","dollar","turtle","scarecrow","bass","canoe","club","policeman","tornado","banjo","bumper","tuna","belief","nyala","saguaro","grenadilla","hawthorn","hubcap","swan","eustoma","pickle","dinosaur","fight","scale","gauge","banana","tiara","quicksand","carver","tapir","bow","weather","count","wolfsbane","smash","accordion","ink","study","mole","supermarket","beam","beauty","orchid","soul","insect","antarctopelta","platypus","scar","channel","workshop","singularity","lawyer","anchovy","lavender","dewberry","hail","catcher","twister","fiber","ounce","dingo","brownie","fog","cashew","dolphin","radium","erica","scallion","blanket","author","fibre","leek","backpack","elm","pair","bearskin","approval","discovery","eggnog","iridium","biplane","lift","astronaut","product","script","hedge","buckthornpepperberry","wilderness","grip","roast","van","beef","scourge","dinghy","traffic","child","violet","delivery","cinema","canopy","opal","sloth","pilot","volcano","venus","rhubarb","cheese","humerus","bell","camel","sheep","cemetery","palm","thorium","expansion","push","spring","cress","budget","parrotfish","gambler","leech","freedom","snake","possum","plot","argon","cookie","citrine","cereal","hoof","mink","watch","breakfast","asiago","impatiens","scribe","town","jaxartosaurus","atmosphere","climb","dessert","alto","eclipse","attraction","jujube","microraptor","smelt","papyrus","garlic","arithmetic","tailor","khaan","receipt","text","pediatrician","jumper","marshmallow","knave","kookaburra","salmonberry","utahraptor","replace","vulcanodon","helicona","memory","meteorology","pantry","cockatoo","dinner","money","cinnamon","earthquake","judge","soup","summer","cellar","riverbed","rule","tadpole","scallop","polo","canid","sternum","flyaway","puppet","pentagon","hacksaw","gaura","position","nerine","cast","methane","bougon","secretary","windscreen","schooner","language","medicine","route","hamburger","foxtail","aspen","gasosaurus","viper","century","treatment","tarascosaurus","primrose","cabin","condition","sovereign","cockroach","marmoset","silkworm","strand","meteor","coconut","part","beach","manta","bar","consonant","wildcat","saffron","daughter","triceratops","neighborhood","raver","trumpet","gigantoraptor","aurora","magic","countess","macaw","fontina","andesaurus","mine","euphonium","toque","nasturtium","honeycrisp","clerk","pin","cement","bactrosaurus","observatory","vein","juice","promotion","baritone","pepperberry","tuberose","cork","sole","radon","tower","silene","william","emoji","wrinkle","shrimp","hamster","purchase","yellowhorn","palladium","beginner","television","felidae","glazer","celestite","freighter","piranha","crystal","red","father","paperback","arthropod","paw","lifter","jersey","dandelion","parsnip","harp","basement","marten","magnolia","beret","truffle","seat","cup","dill","cloth","care","professor","makeup","pen","viola","duchess","mayflower","cross","effect","helium","toucan","fairy","dungeon","gym","wedge","roquefort","mouth","fright","postbox","actor","syzygy","stage","walkover","cabinet","eel","flare","buffalo","roll","elephant","lobe","blade","gasoline","toaster","planarian","ice","legume","walk","fibula","friction","sturgeon","guarantee","storm","shade","warrior","hare","humor","morning","crayon","sociology","feels","homburg","xylocarp","slouch","jellyfish","move","burglar","chanter","failing","brake","tang","slash","trade","quart","omelet","squash","skunk","chard","woodwind","patient","comb","nebula","grade","bookcase","sage","quotation","partner","shock","bosworth","hoverfly","cephalopod","condorraptor","shingle","allspice","circle","plain","capri","minotaurasaurus","metatarsal","meat","croissant","damselfly","astronomy","scene","impala","knife","reply","trust","wolf","buffet","calcium","border","berry","string","alphabet","radish","physician","stoplight","room","basil","lan","gram","giganotosaurus","cap","cream","piper","airplane","forger","breeze","link","cornet","prose","waltz","uncle","philosophy","office","blob","question","pullover","globe","wheel","hisser","tarragon","danthus","editorial","loganberry","quince","era","meteorite","cheshire","cloak","windshield","fin","egg","visor","rail","act","fuel","veterinarian","store","bergamot","diamond","crown","wolfberry","property","celery","rondeletia","fennel","anorak","foxtrot","supernova","spectrograph","apparel","spinach","flood","chip","hope","saturday","pump","cotton","course","apatosaurus","trout","echinodon","espadrille","heron","lion","racer","feast","angolatitan","sparrow","lock","blossom","mandarin","musician","manx","mountain","land","rainforest","myth","sword","sleep","chair","spruce","buffer","log","mars","plough","bandana","scarf","broccoli","hearing","nerve","constrictor","territory","raven","cattle","bonobo","point","chinchilla","morocco","bead","handsaw","vinyl","attack","hexagon","epoch","dolomite","sweater","krill","collarbone","nutmeg","saga","houseboat","can","list","jaguar","firewall","trillium","seatbelt","buttercup","slope","baroness","risk","guavaberry","curtain","almond","fifth","robin","deal","lemur","afrovenator","freezer","laborer","ruby","crater","brian","mass","tumbleweed","mistake","petalite","turnip","book","eris","latency","lark","oyster","church","muskmelon","derby","panama","temper","collar","copper","gray","spandex","sphynx","crocus","yogurt","feeling","plantain","butternut","orchestra","flyingfish","anger","mall","wrench","bean","regnosaurus","leotard","stream","shake","octagon","pillow","broker","shovel","icebreaker","evergreen","argument","screwdriver","iberis","hippodraco","pomegranate","laundry","school","badger","ixia","hardboard","slipper","zephyr","scion","toad","nectarine","rise","fan","honeycup","bridge","scapula","koala","oxygen","dimple","quail","timer","gear","system","supply","megalosaurus","bug","quit","geography","comic","narcissus","oil","playroom","staircase","sauce","syrup","botany","diagnostic","stretch","oriole","pot","booth","knot","baboon","trawler","tulip","pull","snarl","snowshoe","diadem","sardine","kangaroo","plane","education","orangutan","macadamia","football","wildflower","guardian","saver","jackal","price","gargoyleosaurus","acai","winter","pendulum","bird","stallion","fire","amaryllis","blarney","pegasus","magician","cell","chungkingosaurus","grass","potato","poison","visage","key","cook","jobaria","trip","thread","thyme","balance","character","othnielia","wool","tracker","shell","archduke","hibiscus","hoodie","chicken","drawbridge","shad","philodendron","boursin","echo","garnet","sapphire","aluminum","date","artichoke","ravioli","scabiosa","bloom","cord","break","rib","torta","caution","snowman","hydrogen","aerosteon","muscle","driver","snowflake","quesadilla","credit","mint","diver","braid","isthmus","mallet","tomato","source","olivine","justice","node","satellite","paste","taker","samba","direction","pirate","stocking","polish","manager","firefly","princess","cause","apparatus","engineer","thumb","iris","shame","jackrabbit","jaborosa","foundation","protocol","silicon","jewel","bamboo","element","perigee","quill","galette","chronometer","viscount","may","snap","package","moonflower","headstand","eoraptor","goldfish","narwhal","galliform","beet","earth","canary","lasagna","monday","rook","nitrogen","zinc","inspiration","increase","stygimoloch","psychiatrist","muskox","ocarina","promise","xylophone","swallow","marjoram","grain","transport","ton","wish","tablecloth","king","teal","editor","toast","monarch","ambulance","sprout","donkey"]
+
+        Array.prototype.contains = function(obj) {
+            var i = this.length;
+            while (i--) {
+                if (this[i] === obj) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+          var randomizer = Math.floor(Math.random() * first.length);
+          var randomizer2 = Math.floor(Math.random() * second.length);
+
+          var prob = first[randomizer];
+          var sols = second[randomizer2];
+          return prob + "-" + sols;
+        }
+
+        let randomName = project();
+        $("#messages").append(
+          $("<li>").html("<strong>server ~ </strong>" + "" + randomName + " has joined")
+        );
+
+        var commands = ["circle", "triangl;e", "line", "quad", "background", "stroke"];
+
+        $(function () {
+          var socket = io();
+          
+          $("form").submit(function () {
+            if (!$("#m").val().split("(")[1]) {
+              $("#messages").append(
+                $("<li>").html(
+                  '<strong style="color: red">error </strong>' +
+                    '<span style="color: red"> ~  command not found</span>'
+                )
+              );
+              $("#m").val("");
+            } else {
+              console.log($("#m").val().split("(")[0])
+              if (!commands.contains($("#m").val().split("(")[0])) {
+                $("#messages").append(
+                  $("<li>").html(
+                    '<strong style="color: red">error </strong>' +
+                      '<span style="color: red"> ~  command not found</span>'
+                  )
+                );
+              } else {
+                socket.emit("chat message", [$("#m").val(), randomName]);
+                $("#m").val("");
+              }
+            }
+            return false;
+          });
+          socket.on("chat message", function (msg) {
+            $("#messages").append(
+              $("<li>").html("<strong>" + msg[1] + "</strong>" + " ~ " + msg[0] + "")
+            );
+            window.scrollTo(0, document.body.scrollHeight);
+          });
+        });
+        document.onmousedown = (e) => {
+          e.preventDefault();
+        };
+        document.getElementById("name").innerText = randomName + " ~ ";
+    </script>
+  </body>
+</html>
